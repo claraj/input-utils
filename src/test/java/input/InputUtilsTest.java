@@ -160,6 +160,14 @@ public class InputUtilsTest {
 
     @org.junit.Test
     public void testIntInputMessage() throws Exception {
+        
+        replaceInputUtilScanner( 6 + "\n");
+    
+        String message = "This should be printed";
+        catchStandardOut();
+        assertEquals(6, intInput(message));
+        String out = resetStandardOut();
+        assertTrue(out.contains(message));
 
     }
 
@@ -184,7 +192,13 @@ public class InputUtilsTest {
 
     @org.junit.Test
     public void testPositiveIntInputMessage() throws Exception {
-        //todo
+        replaceInputUtilScanner( 6 + "\n");
+    
+        String message = "This should be printed";
+        catchStandardOut();
+        assertEquals(6, positiveIntInput(message));
+        String out = resetStandardOut();
+        assertTrue(out.contains(message));
     }
 
     @org.junit.Test
@@ -249,7 +263,13 @@ public class InputUtilsTest {
     @org.junit.Test
     public void testYesNoInputMessage() throws Exception {
     
-        //todo
+        replaceInputUtilScanner( "yes" + "\n");
+    
+        String message = "This should be printed";
+        catchStandardOut();
+        assertTrue(yesNoInput(message));
+        String out = resetStandardOut();
+        assertTrue(out.contains(message));
     
     
     }
@@ -264,6 +284,8 @@ public class InputUtilsTest {
 
         return out.toString();
     }
+    
+    
     
     private void replaceInputUtilScanner(String data) {
         ByteArrayInputStream mockIn = new ByteArrayInputStream(data.getBytes());
