@@ -290,7 +290,7 @@ public class InputUtils {
     
     /** Converts a Yes or No input to a boolean value
   
-     @returns "yes" or "y" or uppercase variants returns true
+     @return "yes" or "y" or uppercase variants returns true
      "no" or "n" or uppercase variants return false
      All other inputs ask user to re-enter data
      
