@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 /**
- * Created by Clara on 5/30/17.
+ *
  * Utility methods for
  *   - getting validated integer and double input from user.
  *   - getting positive integer or double input from user.
@@ -15,20 +15,13 @@ import java.util.Scanner;
 
 public class InputUtils {
     
-    //Create two scanners, one for Strings, and one for numbers - int and float values.
     
-    static Scanner stringScanner;
-   // static Scanner numberScanner;
+    static Scanner stringScanner = new Scanner(System.in);
+        
     
-    // Static initialization block.
-    static {
-        //Use this scanner to read text data that will be stored in String variables
-        stringScanner = new Scanner(System.in);
-        //Use this scanner to read in numerical data that will be stored in int or double variable
-    }
-    
-    
-    /** Print question, return whatever user types as a String. */
+    /** Print question, wait for user to type and press return, return the data entered.
+     * @param question Text to print for the user
+     * @return whatever user types as a String. */
     public static String stringInput(String question) {
         if (question != null) {
             System.out.println(question);
@@ -36,15 +29,21 @@ public class InputUtils {
         return stringScanner.nextLine();
     }
     
-    /** Calls the above method, but does not print a question. */
+    /**  Wait for user to type and press return, return the data entered.
+     *
+     * @return the String the user types.  */
     public static String stringInput() {
         return stringInput(null);
     }
     
     
     
-    /** Takes a question, asks user the question, checks to make sure user enters a double, and
-    then returns that double to the calling method. */
+    /** Gets a double number from the user.
+     *  Print question, wait for user to type and press return,
+     *  verify data is a double, ask for input again if not.
+     *
+     * @param question A question to print for the user.
+    @return the double value entered. */
     public static double doubleInput(String question) {
         
         while (true) {
@@ -64,7 +63,7 @@ public class InputUtils {
             } // if the input can't be read as a double, then an error will be raised.
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
-            catch (NumberFormatException ime) {
+            catch (NumberFormatException nfe) {
                 System.out.println("Error - please enter a number");
             }
             
@@ -73,15 +72,34 @@ public class InputUtils {
     }
     
     
-    /** A variant of the doubleInput method, - notice it calls doubleInput with null as the argument */
+    /** Gets a double number from the user.
+     *  Wait for user to type and press return,
+     *  Verify data is a double, ask for input again if not.
+     *
+     @return the double value entered. */
+
     public static double doubleInput() {
         return doubleInput(null);
     }
     
-    /** A variant of the doubleInput method, but rejects negative numbers. 0 is considered positive. */
+    /** Gets a double number from the user.
+     *  Wait for user to type and press return,
+     *  Verify data is a positive double, ask for input again if not.
+     *  0 is considered positive.
+     *
+     @return the double value entered. */
+    
     public static double positiveDoubleInput() { return positiveDoubleInput(null); }
     
-    /** A variant of the doubleInput method, but rejects negative numbers. 0 is considered positive. */
+    
+    /** Gets a double number from the user.
+     *  Wait for user to type and press return,
+     *  Verify data is a positive double, ask for input again if not.
+     *  0 is considered positive.
+     *
+     * @param question A question to print for the user.
+     @return the double value entered. */
+  
     public static double positiveDoubleInput(String question) {
         
         while (true) {
@@ -124,8 +142,10 @@ public class InputUtils {
     }
     
     
-    //Takes a question, asks user the question, checks to make sure user enters an int, and
-    //then returns that int to the calling method.
+    /** Asks user a question, waits for response, checks to make sure user enters a integer.
+     *
+     * @param question the question that will be displayed for the user
+     * @return the int value entered. */
     public static int intInput(String question) {
         
         while (true) {
@@ -160,17 +180,28 @@ public class InputUtils {
         
     }
     
-    // A variant of the methods above and below - notice it calls intInput with null as the argument
+    /** Waits for user to type, checks to make sure user enters a integer.
+     *
+     * @return the int value entered. */
+    
     public static int intInput() {
         return intInput(null);
     }
+    
+    
+    /** Waits for user to type, checks to make sure user enters a positive integer.
+     * 0 is considered positive.
+     * @return the int value entered. */
+    
     public static int positiveIntInput() {
         return positiveIntInput(null);
     }
     
     
-    //Takes a question, asks user the question, checks to make sure user enters an int, and
-    //then returns that int to the calling method.
+    /** Asks user a question, waits for response, checks to make sure user enters a positive integer.
+     * 0 is considered positive.
+     * @return the int value entered. */
+
     public static int positiveIntInput(String question) {
         
         while (true) {
@@ -209,11 +240,15 @@ public class InputUtils {
     }
     
     
-    /* Converts a Yes or No input to a boolean value
-    "yes" or "y" or uppercase variants returns true
+    /** Converts a Yes or No input to a boolean value
+     *
+     * @param question a question to print for the user
+    @return "yes" or "y" or uppercase variants returns true
     "no" or "n" or uppercase variants return false
     All other inputs ask user to re-enter data
+   
      */
+   
     public static boolean yesNoInput(String question) {
         
         // Values that are considered to be a yes response
@@ -251,6 +286,17 @@ public class InputUtils {
         }
         
     }
+    
+    
+    /** Converts a Yes or No input to a boolean value
+  
+     @returns "yes" or "y" or uppercase variants returns true
+     "no" or "n" or uppercase variants return false
+     All other inputs ask user to re-enter data
+     
+     */
+    
+    
     
     public static boolean yesNoInput() {
         return yesNoInput(null);
