@@ -24,7 +24,7 @@ public class InputUtils {
      * @return whatever user types as a String. */
     public static String stringInput(String question) {
         if (question != null) {
-            System.out.println(question);
+            System.out.printf("%s: ", question);
         }
         return stringScanner.nextLine();
     }
@@ -49,7 +49,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed, expect it to be a double.
@@ -105,7 +105,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed, expect it to be a POSITIVE (0 or greater) double.
@@ -151,7 +151,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed as an int.
@@ -207,7 +207,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed as an int.
@@ -269,7 +269,7 @@ public class InputUtils {
             }
             
             // Suggest expected responses
-            System.out.println(" Y/N? ");
+            System.out.print(" Y/N? ");
             
             String response = stringScanner.nextLine().toLowerCase();
             
