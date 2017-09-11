@@ -66,7 +66,7 @@ public class InputUtils {
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException nfe) {
-                System.out.println("Error - please enter a number");
+                System.out.println("Error - please enter a number.");
             }
             
         }
@@ -123,7 +123,7 @@ public class InputUtils {
                 }
                 
                 else {
-                    throw new NumberFormatException(userInput + "is not valid. Number must be positive");
+                    throw new NumberFormatException(userInput + " is not valid. Number must be positive.");
                 }
                 
             }
@@ -132,7 +132,7 @@ public class InputUtils {
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ne) {
-                System.out.println("Error - please enter a positive number");
+                System.out.println("Error - please enter a positive number.");
             }
         }
         
@@ -164,7 +164,7 @@ public class InputUtils {
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ime) {
-                System.out.println("Error - please enter an integer number");
+                System.out.println("Error - please enter an integer number.");
             }
         }
         
@@ -209,7 +209,7 @@ public class InputUtils {
                 if (userInput >= 0) {
                     return userInput;
                 } else {
-                    throw new NumberFormatException(userInput + "is not valid. Number must be positive.");
+                    throw new NumberFormatException(userInput + " is not valid. Number must be positive.");
                 }
                 
             } // if the input can't be read as an int, then an error will be raised.
@@ -217,7 +217,7 @@ public class InputUtils {
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ime) {
-                System.out.println("Error - please enter a positive integer number");
+                System.out.println("Error - please enter a positive integer number.");
             }
         }
         
@@ -237,12 +237,9 @@ public class InputUtils {
         
         // Values that are considered to be a yes response
         ArrayList<String> yesValues = new ArrayList(Arrays.asList("yes", "y"));
-        yesValues.add("yes"); yesValues.add("y");
         
         // Same for no responses
-        
-        ArrayList<String> noValues = new ArrayList<String>();
-        noValues.add("no"); noValues.add("n");
+        ArrayList<String> noValues = new ArrayList(Arrays.asList("no", "n"));
         
         
         while (true) {
@@ -265,7 +262,8 @@ public class InputUtils {
                 return false;
             }
             
-            // If the user input is not a yes or a no response, the loop will repeat.
+            // If the user input is not a yes or a no response, print error, and the loop will repeat.
+            System.out.println("Please enter 'y' or 'n'.");
             
         }
         
@@ -279,9 +277,6 @@ public class InputUtils {
      All other inputs ask user to re-enter data
      
      */
-    
-    
-    
     public static boolean yesNoInput() {
         return yesNoInput(null);
     }
