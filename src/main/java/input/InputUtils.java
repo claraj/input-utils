@@ -1,6 +1,7 @@
 package input;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public class InputUtils {
     
     
-    static Scanner stringScanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
         
     
     /** Print question, wait for user to type and press return, return the data entered.
@@ -26,8 +27,9 @@ public class InputUtils {
         if (question != null) {
             System.out.println(question);
         }
-        return stringScanner.nextLine();
+        return scanner.nextLine();
     }
+    
     
     /**  Wait for user to type and press return, return the data entered.
      *
@@ -57,7 +59,7 @@ public class InputUtils {
                 // If the input can be read as a double, that double value will be returned
                 // This ends the loop, and this method, and control returns to the calling method.
                 
-                String line = stringScanner.nextLine();
+                String line = scanner.nextLine();
                 return Double.parseDouble(line);
                 
             } // if the input can't be read as a double, then an error will be raised.
@@ -114,7 +116,7 @@ public class InputUtils {
                 // This ends the loop, and this method, and control returns to the calling method.
     
     
-                String line = stringScanner.nextLine();
+                String line = scanner.nextLine();
                 double userInput = Double.parseDouble(line);
                 if (userInput >= 0)  {
                     return userInput;
@@ -124,18 +126,13 @@ public class InputUtils {
                     throw new NumberFormatException(userInput + "is not valid. Number must be positive");
                 }
                 
-            } // if the input can't be read as a double, then an error will be raised.
+            }
+            
+            // if the input can't be read as a double, then an error will be raised.
             // That error can be 'caught' by this code, and we can print an error message.
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ne) {
                 System.out.println("Error - please enter a positive number");
-               
-                /* If the value fetched from numberScanner.nextDouble can't be interpreted as a double,
-                then that value is 'left' in the scanner, in case you wanted to try and read it with a numberScanner.nextLine()
-                or other scanner method.
-                So as your loop repeats, it keeps trying to read the same invalid data from the scanner.
-                To fix, in the event of an exception, clear the invalid input with numberScanner.next()
-                */
             }
         }
         
@@ -158,7 +155,7 @@ public class InputUtils {
             try {
                 // If the input can be read as a int, that int will be returned
                 // This ends the loop, and this method, and control returns to the calling method.
-                String line = stringScanner.nextLine();
+                String line = scanner.nextLine();
                 return Integer.parseInt(line);
     
     
@@ -168,13 +165,6 @@ public class InputUtils {
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ime) {
                 System.out.println("Error - please enter an integer number");
-                //numberScanner.next();
-                /* If the value fetched from numberScanner.nextInt can't be interpreted as a int,
-                then that value is 'left' in the scanner, in case you wanted to try and read it with a
-                numberScanner.nextLine() or numberScanner.nextDouble() or other scanner method.
-                So as your loop repeats, it keeps trying to read the same invalid data from the scanner.
-                To fix, in the event of an exception, clear the invalid input with numberScanner.next()
-                */
             }
         }
         
@@ -214,7 +204,7 @@ public class InputUtils {
             try {
                 // If the input can be read as a int, that int will be returned
                 // This ends the loop, and this method, and control returns to the calling method.
-                String line = stringScanner.nextLine();
+                String line = scanner.nextLine();
                 int userInput = Integer.parseInt(line);
                 if (userInput >= 0) {
                     return userInput;
@@ -228,12 +218,6 @@ public class InputUtils {
             // Since we are inside a while loop, then the loop can repeat and ask the user for input again.
             catch (NumberFormatException ime) {
                 System.out.println("Error - please enter a positive integer number");
-                /* If the value fetched from numberScanner.nextInt can't be interpreted as a int,
-                then that value is 'left' in the scanner, in case you wanted to try and read it with a
-                numberScanner.nextLine() or numberScanner.nextDouble() or other scanner method.
-                So as your loop repeats, it keeps trying to read the same invalid data from the scanner.
-                To fix, in the event of an exception, clear the invalid input with numberScanner.next()
-                */
             }
         }
         
@@ -252,7 +236,7 @@ public class InputUtils {
     public static boolean yesNoInput(String question) {
         
         // Values that are considered to be a yes response
-        ArrayList<String> yesValues = new ArrayList<String>();
+        ArrayList<String> yesValues = new ArrayList(Arrays.asList("yes", "y"));
         yesValues.add("yes"); yesValues.add("y");
         
         // Same for no responses
@@ -271,7 +255,7 @@ public class InputUtils {
             // Suggest expected responses
             System.out.println(" Y/N? ");
             
-            String response = stringScanner.nextLine().toLowerCase();
+            String response = scanner.nextLine().toLowerCase();
             
             if (yesValues.contains(response)) {
                 return true;
