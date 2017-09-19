@@ -79,7 +79,7 @@ public class InputUtilsTest {
 
         //setStandardIn(invalidInputsFollowedByValid);
         ByteArrayInputStream mockIn = new ByteArrayInputStream(invalidInputsFollowedByValid.getBytes());
-        InputUtils.stringScanner = new Scanner(mockIn);
+        InputUtils.scanner = new Scanner(mockIn);
 
         assertEquals(finalValid, doubleInput(), delta);
         
@@ -274,8 +274,24 @@ public class InputUtilsTest {
     
     }
 
+    
+    @org.junit.Test
+    public void testCombination() throws Exception {
+        
+        // Numbers, strings, numbers, strings...
+        
+        String data = joinWithNewlines(4, "Hello", 1234.345, "Bye!");
+        replaceInputUtilScanner(data);
+        
+        assertEquals(intInput(), 4);
+        assertEquals(stringInput(), "Hello");
+        assertEquals(doubleInput(), 1234.345, 0.001);
+        assertEquals(stringInput(), "Bye!");
+        
+    }
+    
 
-    private String joinWithNewlines(Object[] data) {
+    private String joinWithNewlines(Object... data) {
         StringBuilder out = new StringBuilder();
         for (Object s : data) {
             out.append(s);
@@ -289,9 +305,12 @@ public class InputUtilsTest {
     
     private void replaceInputUtilScanner(String data) {
         ByteArrayInputStream mockIn = new ByteArrayInputStream(data.getBytes());
-        InputUtils.stringScanner = new Scanner(mockIn);
+        InputUtils.scanner = new Scanner(mockIn);
     
     }
+    
+    
+    
     
 
 }
