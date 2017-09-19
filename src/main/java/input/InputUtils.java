@@ -1,7 +1,7 @@
 package input;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -236,10 +236,10 @@ public class InputUtils {
     public static boolean yesNoInput(String question) {
         
         // Values that are considered to be a yes response
-        ArrayList<String> yesValues = new ArrayList(Arrays.asList("yes", "y"));
+        List<String> yesValues = Arrays.asList("yes", "y");
         
         // Same for no responses
-        ArrayList<String> noValues = new ArrayList(Arrays.asList("no", "n"));
+        List<String> noValues = Arrays.asList("no", "n");
         
         
         while (true) {
