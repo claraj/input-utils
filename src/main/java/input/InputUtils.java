@@ -1,7 +1,7 @@
 package input;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -25,7 +25,7 @@ public class InputUtils {
      * @return whatever user types as a String. */
     public static String stringInput(String question) {
         if (question != null) {
-            System.out.println(question);
+            System.out.printf("%s: ", question);
         }
         return scanner.nextLine();
     }
@@ -51,7 +51,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed, expect it to be a double.
@@ -107,7 +107,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed, expect it to be a POSITIVE (0 or greater) double.
@@ -148,7 +148,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed as an int.
@@ -197,7 +197,7 @@ public class InputUtils {
         while (true) {
             // If user has provided a question, then print it for the user
             if (question != null) {
-                System.out.println(question);
+                System.out.printf("%s: ", question);
             }
             
             //Try to read what the user typed as an int.
@@ -236,10 +236,10 @@ public class InputUtils {
     public static boolean yesNoInput(String question) {
         
         // Values that are considered to be a yes response
-        ArrayList<String> yesValues = new ArrayList(Arrays.asList("yes", "y"));
+        List<String> yesValues = Arrays.asList("yes", "y");
         
         // Same for no responses
-        ArrayList<String> noValues = new ArrayList(Arrays.asList("no", "n"));
+        List<String> noValues = Arrays.asList("no", "n");
         
         
         while (true) {
@@ -250,7 +250,7 @@ public class InputUtils {
             }
             
             // Suggest expected responses
-            System.out.println(" Y/N? ");
+            System.out.print(" Y/N? ");
             
             String response = scanner.nextLine().toLowerCase();
             
